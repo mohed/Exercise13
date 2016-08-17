@@ -29,6 +29,20 @@ public class Main {
             updateScreen(player, monster, terminal);
             MovePlayer.movePlayer(player, terminal);
             Monster.moveMonster(player, monster);
+
+            if  ((player.x - monster.x) == 0 && (player.y - monster.y) == 0){
+                printToTerminal("Game over", terminal);
+                break;
+            }
+        }
+    }
+
+    private static void printToTerminal(String s, Terminal terminal) {
+        terminal.clearScreen();
+        terminal.moveCursor(5, 5);
+        for (int i = 0; i < s.length(); i++) {
+            terminal.putCharacter(s.charAt(i));
+            terminal.moveCursor(5+i, 5);
         }
     }
 
